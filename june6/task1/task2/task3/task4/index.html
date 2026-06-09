@@ -42,6 +42,14 @@ data-bs-target="#menu">
 <h4>Web Developer</h4>
 
 <p>Passionate Full Stack Developer</p>
+<input type="text" id="visitorName" class="form-control w-25 mx-auto mb-3"
+placeholder="Enter your name">
+
+<button class="btn btn-primary" onclick="saveName()">
+Save Name
+</button>
+
+<h4 id="welcomeMsg" class="mt-3"></h4>
 
 <button class="btn btn-light">
 Download Resume
@@ -52,6 +60,26 @@ Download Resume
 <footer class="text-center">
 Portfolio Website
 </footer>
+
+<script>
+function saveName() {
+    let name = document.getElementById("visitorName").value;
+
+    sessionStorage.setItem("name", name);
+
+    document.getElementById("welcomeMsg").innerText =
+        "Welcome, " + name;
+}
+
+window.onload = function () {
+    let storedName = sessionStorage.getItem("name");
+
+    if (storedName) {
+        document.getElementById("welcomeMsg").innerText =
+            "Welcome back, " + storedName;
+    }
+}
+</script>
 
 </body>
 </html>
